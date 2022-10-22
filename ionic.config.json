@@ -1,0 +1,7 @@
+{
+  "name": "lixo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
