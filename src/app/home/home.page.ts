@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
       localidade: ['', Validators.required],
       logradouro: ['', Validators.required],
       estado: ['', Validators.required],
-      genero: [''],
+      genero: ['', Validators.required],
       outro: ['']
     })
   }
