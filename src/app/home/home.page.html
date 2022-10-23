@@ -1,20 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="formulario" (submit)="enviar()" >
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome"  placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.nome.touched" slot="error">
+        <span *ngIf="formulario.controls.nome.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Nome é obrigatório</span>
+        <span *ngIf="formulario.controls.nome.errors?.['minlength']"><ion-icon name="alert-outline"></ion-icon>No mínimo 3 caracteres</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Sobrenome</ion-label>
+      <ion-input formControlName="sobrenome" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.sobrenome.touched" slot="error">
+        <span *ngIf="formulario.controls.sobrenome.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Sobrenome é obrigatório</span>
+        <span *ngIf="formulario.controls.sobrenome.errors?.['minlength']"><ion-icon name="alert-outline"></ion-icon>No mínimo 3 caracteres</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input formControlName="cpf" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.cpf.touched" slot="error">
+        <span *ngIf="formulario.controls.cpf.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>CPF é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input formControlName="cep" placeholder="Enter text" (ionBlur)="onBlurEffect()"></ion-input>
+      <ion-note *ngIf="formulario.controls.cep.touched" slot="error">
+        <span *ngIf="formulario.controls.cep.errors?.['pattern']">CEP Inválido</span>
+        <span *ngIf="formulario.controls.cep.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>CEP é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input formControlName="bairro" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.bairro.touched" slot="error">
+        <span *ngIf="formulario.controls.bairro.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Bairro é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Localidade</ion-label>
+      <ion-input formControlName="localidade" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.localidade.touched" slot="error">
+        <span *ngIf="formulario.controls.localidade.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Localidade é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Logradouro</ion-label>
+      <ion-input formControlName="logradouro" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.logradouro.touched" slot="error">
+        <span *ngIf="formulario.controls.logradouro.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Logradouro é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input formControlName="estado" placeholder="Enter text"></ion-input>
+      <ion-note *ngIf="formulario.controls.estado.touched" slot="error">
+        <span *ngIf="formulario.controls.estado.errors?.['required']"><ion-icon name="alert-outline"></ion-icon>Estado é obrigatório</span>
+      </ion-note>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Gênero</ion-label>
+      <ion-select formControlName="genero" (ionChange)="optionsFn();">
+        <ion-select-option>Masculino</ion-select-option>
+        <ion-select-option>Feminino</ion-select-option>
+        <ion-select-option>Não informado</ion-select-option>
+        <ion-select-option>Informar outro</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item [hidden]=showLabel>
+      <ion-label position="floating">Informe</ion-label>
+      <ion-input formControlName="outro" placeholder="Enter text"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit">Submit</ion-button>
+  </form>
 </ion-content>
